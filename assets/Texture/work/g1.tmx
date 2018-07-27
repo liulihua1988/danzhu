@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.5" orientation="orthogonal" renderorder="right-down" width="18" height="11" tilewidth="50" tileheight="50" infinite="0" nextobjectid="1">
+ <tileset firstgid="1" source="g1_1.tsx"/>
+ <tileset firstgid="301" source="g1_2.tsx"/>
+ <tileset firstgid="302" source="g1_4.tsx"/>
+ <layer name="Layer1" width="18" height="11">
+  <data encoding="base64" compression="zlib">
+   eJyFzNkyFQAAgOFTT0Rlqeuy55rKei0JuS6lbSY3hyLVjC2iUmaIVpFmtEnIMkNatKqZlAqJzwOczsz/3f7BQCAQDCGCSDaxmS1EEU0MsWxl238e67azgzjiSSCRJJJJYSepYT5ppLOL3ewhg0yyyCaH3DCfPPaSzz4K2E8hRRRzgJIwn4McopTDHKGMoxzjOCc4ySnKQ3wqqOQ0Z6iimrPUcI7zXKCWOuppoJGLNNHMJVpo5TJXuEob17hOOx10coMuurnJLW5zh7vco4f79NLHA/p5yACPeMwTnvKMQZ4zxAuGGWGUl4wxzgSTTDHNK2Z4zRve8o5Z3vOBj3ziM1+Y4yvf+M48P/jJAr/4zR8WWWKZv6zwj1UCG8RG1gDmW3lM
+  </data>
+ </layer>
+ <layer name="layer2" width="18" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgeQJdxeNgxCogHtIwPANZlAIs=
+  </data>
+ </layer>
+ <layer name="layer3" width="18" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAN0GNkYNAHYgMgNmQk3xwjoF5jIDYBYlMKzBmqYKiG41B1NwwAAAy5BL0=
+  </data>
+ </layer>
+</map>

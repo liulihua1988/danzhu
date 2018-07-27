@@ -1,0 +1,30 @@
+{
+  "ver": "1.0.0",
+  "uuid": "015cabbb-de30-4210-a76f-24a419afc6c3",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "subMetas": {
+    "像素洞穴探险游戏素材-行星4_中风(planet4_stro_爱给网_aigei_com": {
+      "ver": "1.0.3",
+      "uuid": "11547161-7366-4028-8cd1-4c68bca6fa5d",
+      "rawTextureUuid": "015cabbb-de30-4210-a76f-24a419afc6c3",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 6,
+      "offsetY": 0.5,
+      "trimX": 22,
+      "trimY": 7,
+      "width": 868,
+      "height": 885,
+      "rawWidth": 900,
+      "rawHeight": 900,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
