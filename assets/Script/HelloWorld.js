@@ -43,7 +43,8 @@ cc.Class({
 
     properties: {
       cc_paddlePrefab:cc.Prefab,
-      cc_tileMap:cc.TiledMap
+      cc_tileMap:cc.TiledMap,
+      cc_handleNode:cc.Node
     },
 
     // use this for initialization
@@ -51,7 +52,9 @@ cc.Class({
         initMgr();
         cc.vv.matchvsMgr.setNode(this.node.getChildByName("mapNode"));
         cc.vv.matchvsMgr.setPaddlePrefab(this.cc_paddlePrefab);
+        cc.vv.matchvsMgr.setHandleNode(this.cc_handleNode);
         cc.director.getPhysicsManager().enabled = true;
+        this.cc_handleNode.active = false;
 
         this._dongNode = this.node.getChildByName("mapNode").getChildByName("dong").getComponent(cc.DistanceJoint);
 

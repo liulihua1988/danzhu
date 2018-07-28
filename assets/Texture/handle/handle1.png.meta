@@ -1,14 +1,14 @@
 {
   "ver": "1.0.0",
-  "uuid": "c15b8e00-3845-48f1-95a1-375cf1e529be",
+  "uuid": "cb248480-0bb1-4b16-970c-8c2b8e4c4e82",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
   "subMetas": {
-    "paddle_0000_图层-2": {
+    "handle1": {
       "ver": "1.0.3",
-      "uuid": "bb112edb-baaf-45e1-8dc0-98e22df64bb5",
-      "rawTextureUuid": "c15b8e00-3845-48f1-95a1-375cf1e529be",
+      "uuid": "d2002de2-bc07-4c53-8622-555db517836f",
+      "rawTextureUuid": "cb248480-0bb1-4b16-970c-8c2b8e4c4e82",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -16,10 +16,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 107,
-      "height": 41,
-      "rawWidth": 107,
-      "rawHeight": 41,
+      "width": 109,
+      "height": 40,
+      "rawWidth": 109,
+      "rawHeight": 40,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

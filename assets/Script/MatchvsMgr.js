@@ -12,6 +12,13 @@ cc.Class({
         this._paddles = {};
         this._paddleUrl = "https://ress1.xtw.new.uqee.com/koudai/paddle/p1.png";
         this._dong = null;
+        this._events = {};
+        this._users = [];
+        this._turn = Math.floor(cc.random0To1()*3);
+        this._nextTurn = false;
+        this._people = 3;
+
+        
 
         this._account = cc.args['account'];
         if (this._account == null) {
@@ -120,6 +127,12 @@ cc.Class({
 
         this.addPaddle({userId:cc.vv.GLB.userInfo.userId,userProfile:{account:this._account,position:position,paddleUrl:this._paddleUrl}},position);
 
+        for(var i = 1;i<this._people;i++){
+            position = this.getPaddlePosition();
+            this.addPaddle({userId:i,userProfile:{account:i,position:position,paddleUrl:this._paddleUrl}},position);
+        }
+
+        this.setNextTurn(true);
         // this._dong.connectedBody = this._paddles[cc.vv.GLB.userInfo.userId].getRigidBody();
         // this._dong.apply();
 
@@ -237,6 +250,7 @@ cc.Class({
             }
         }
         this._paddles = {};
+        this._users.length = 0;
         
     },
     leaveRoomNotify:function(roomUserInfo){
@@ -252,6 +266,10 @@ cc.Class({
                 this._dong.apply();
             }
             delete this._paddles[roomUserInfo.userId];
+            var pos = this._users.indexOf(roomUserInfo.userId);
+            if(pos !== -1){
+                this._users.splice(pos,1);
+            }
         }
         
     },
@@ -268,7 +286,7 @@ cc.Class({
         }else{
             this._paddles[userInfo.userId].setPosition(position);
         }
-       
+        this._users.push(userInfo.userId);
     },
     kickPlayer:function(userId){
         cc.vv.mvs.engine.kickPlayer(userId);
@@ -283,8 +301,52 @@ cc.Class({
             // srcUserId	number	gameServer推送时 这个值为0	0
             // cpProto	string	推送的消息内容	“gameServer”
     },
+    on:function(key,cb){
+        this._events[key] = cb;
+    },
+    off:function(key){
+        delete this._events[key];
+    },
     setNode:function(node){
         this.node = node;
+        var width = node.width/2;
+        var height = node.height/2;
+        node.on(cc.Node.EventType.TOUCH_START, function(event){
+            var callBack = this._events[cc.Node.EventType.TOUCH_START];
+            callBack&&callBack.call(null,event);
+        }.bind(this));
+
+        node.on(cc.Node.EventType.TOUCH_MOVE, function (event) {
+            var callBack = this._events[cc.Node.EventType.TOUCH_MOVE];
+            callBack&&callBack.call(null,event);
+        }.bind(this));
+
+        node.on(cc.Node.EventType.TOUCH_END, function (event) {
+            var callBack = this._events[cc.Node.EventType.TOUCH_END];
+            callBack&&callBack.call(null,event);
+        }.bind(this));
+
+        node.on(cc.Node.EventType.TOUCH_CANCEL, function (event) {
+            var callBack = this._events[cc.Node.EventType.TOUCH_CANCEL];
+            callBack&&callBack.call(null,event);
+        }.bind(this));
+    },
+    setNextTurn:function(next){
+        this._nextTurn = next;
+        if(next){
+            this._turn = ++this._turn%this._people;
+            cc.log("turn="+this._turn);
+            var userId = this._users[this._turn];
+            if(userId !== cc.vv.GLB.userInfo.userId){
+                this._paddles[userId].npcStart();
+            }
+        }
+    },
+    isTurn:function(){
+        return this._turn === 0;
+    },
+    getNextTurn:function(){
+        return this._nextTurn;
     },
     setPaddleSprite:function(url){
         var paddleJs = this._paddles[cc.vv.GLB.userInfo.userId];
@@ -299,6 +361,12 @@ cc.Class({
     },
     setPaddlePrefab:function(prefab){
         this.paddlePrefab = prefab;
+    },
+    setHandleNode:function(handleNode){
+        this.handleNode = handleNode;
+    },
+    getHandleNode:function(){
+        return this.handleNode;
     },
     getPaddlePosition: function () {
         var randX = cc.randomMinus1To1() * 450;
